@@ -21,5 +21,6 @@ def pack_my_knapsack(bars, knapsack_capacity):
 def main():
     print("Max weight", (pack_my_knapsack([int(x) for x in input("Enter weight of bars: ").split()], int(input("Enter knapsack capacity: ")))))
 
+
 if __name__ == '__main__':
     main()
