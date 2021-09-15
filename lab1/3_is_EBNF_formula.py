@@ -1,5 +1,4 @@
 allowed_signs = ['+', '-']
-
 math_expresion = input("Enter your math expresion: ")
 try:
     for cur_index in range(0, len(math_expresion) - 1):
