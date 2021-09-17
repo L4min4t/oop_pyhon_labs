@@ -1,5 +1,6 @@
 allowed_signs = ['+', '-']
 math_expresion = input("Enter your math expresion: ")
+math_expresion = math_expresion.replace(' ', '')
 try:
     for cur_index in range(0, len(math_expresion) - 1):
         if (math_expresion[cur_index] in allowed_signs) and (math_expresion[cur_index + 1] in allowed_signs):
