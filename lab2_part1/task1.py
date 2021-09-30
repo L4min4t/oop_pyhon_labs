@@ -10,12 +10,8 @@ class Rectangle:
     also class can calculate area and perimetr
     """
     def __init__(self, length = 1., width = 1.):
-        if not(isinstance(width, float)) or not(isinstance(length, float)):
-            raise TypeError ('type must by float')
-        elif length <= 0 or length > 20 or width < 0 or width > 20:
-            raise ValueError('0 <= side <= 20')
-        self.__length = length
-        self.__width = width
+        self.length = length
+        self.width = width
     
     def calculate_perimetr(self):
         return 2*(self.__width + self.__length)
