@@ -1,0 +1,3 @@
+# Create a class that performs statistical processing of a text file - counting characters, words, sentences, etc.
+# Determine the required attributes-data and attributes-methods in class for working with the text file.
+
