@@ -1,53 +1,65 @@
-from string import ascii_letters, digits, punctuation   
+from genericpath import exists
+from genericpath import getsize
+from string import ascii_letters, digits
 
 class Text_handler:
+    """
+    parsing of a text file
+    """
     def __init__(self, file_name):
-        with open(file_name, 'r') as f:
-            contents = f.read()
-        f.close()
-        self.__contents = contents
+        if not isinstance(file_name, str):
+            raise TypeError('file name must be a string')
+        if file_name == '':
+            raise ValueError('file name can\'t be empty')
+        if not exists(file_name):
+            raise LookupError('file doesn\'t exist')
+        if getsize(file_name) >= 6.4e7:
+            raise MemoryError('too large file, size of file must be less than 64mb')
+        self.__file_name = file_name
 
-    def how_many_letters(self):
-        counter = 0
-        for i in self.__contents:
-            if i in ascii_letters:
-                counter += 1
-        return counter
-    
-    def how_many_digits(self):
-        counter = 0
-        for i in self.__contents:
-            if i in digits:
-                counter += 1
-        return counter
 
-    def how_many_words(self):
-        counter = 0
-        for i in range(0, len(self.__contents) - 1):
-            if self.__contents[i] in ascii_letters and self.__contents[i + 1] in punctuation.replace('-', ' '):
-                counter += 1
-        return counter
-
-    def how_many_sentences(self):
-        counter = 0
-        flag = False
-        for i in range(0, len(self.__contents)):
-            if self.__contents[i] in ascii_letters and not flag:
-                flag = True
-            if self.__contents[i] in '.?!' and flag:
-                flag = False
-                counter += 1
-        return counter
-     
     def all_statistic(self):
-        return f'\bStatistic:\nletters = {self.how_many_letters()}\nwords = {self.how_many_words()}\ndigits = {self.how_many_digits()}\nsentences = {self.how_many_sentences()}'
+        file =  open(self.__file_name, 'r')
+        number_of_words = 0
+        number_of_letters = 0
+        number_of_characters = 0
+        number_of_sentences = 0  
+        number_of_digits = 0
+        flag = False    
+
+        for line in file:
+            for ch in line: 
+                if ch in ascii_letters:
+                    number_of_letters += 1
+                if ch in digits:
+                    number_of_digits += 1
+                if ch in ascii_letters and not flag:
+                    flag = True
+                if ch in '.?!' and flag:
+                    flag = False
+                    number_of_sentences += 1
+            line = line.strip("\n")
+            words = line.split()
+            number_of_words += len(words)
+            number_of_characters += len(line)
+
+        file.close()
+
+        return {'characters' : number_of_characters, 'letters' : number_of_letters, 'digits' : number_of_digits, 'words' : number_of_words, 'sentences' : number_of_sentences}
+
 
     def __str__(self) -> str:
-        return self.__contents
+        result = 'Statistics:\n'
+        for key, value in self.all_statistic().items():
+            result = result + key + ': ' + str(value) + '\n'
+        return result[0:-1]
     
 
 def main():
-    a = Text_handler('text2.txt')
-    print(a, '\n\n\n', a.all_statistic())
+    try:
+        a = Text_handler('text2.txt')
+        print(a)
+    except Exception as exc:
+        print(exc)
 
 main()
