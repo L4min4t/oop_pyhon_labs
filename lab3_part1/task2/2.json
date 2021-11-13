@@ -1,0 +1,58 @@
+{
+  "pizza-of-the-day": [
+    {
+      "day": "Monday",
+      "name": "Pepperoni",
+      "recipe": {"dough": 1, "pork": 1, "cheese": 1},
+      "price": 160.0
+    },
+    {
+      "day": "Tuesday",
+      "name": "Pepperoni",
+      "recipe": {"dough": 1, "cheese": 1, "pineapple": 1},
+      "price": 155.6
+    },
+    {
+      "day": "Wednesday",
+      "name": "Buffalo",
+      "recipe": {"dough": 1, "cheese": 1, "tomato": 1},
+      "price": 130.5
+    },
+    {
+      "day": "Thursday",
+      "name": "Ecco",
+      "recipe": {"dough": 1, "cheese": 1, "bavarian sausages": 1},
+      "price": 175.5
+    },
+    {
+      "day": "Friday",
+      "name": "Cheese",
+      "recipe": {"dough": 1, "cheese": 1, "extra cheese": 1},
+      "price": 185.5
+    },
+    {
+      "day": "Saturday",
+      "name": "Meat",
+      "recipe": {"dough": 1, "beef": 1, "sausages": 1},
+      "price": 178.9
+    },
+    {
+      "day": "Sunday",
+      "name": "Hawaiian",
+      "recipe": {"dough": 1, "pineapple": 1, "beef": 1},
+      "price": 165.5
+    }
+  ],
+  "menu": [
+    {
+      "name": "Chicken",
+      "recipe": {"dough": 1, "chicken": 1, "sausages": 1},
+      "price": 230.0
+    },
+    {
+      "name": "Ram",
+      "recipe": {"dough": 1, "mutton": 1, "sausages": 1},
+      "price": 178.9
+    }
+    ]
+}
