@@ -65,18 +65,6 @@ class Pizza:
             self.__price += 20 * quantity
 
     @staticmethod
-    def get_pizza_of_the_day():
-        today = date.today().strftime('%A')
-        if os.path.exists('pizza.json'):
-            with open('pizza.json', 'r') as f:
-                dump = json.load(f)
-                for pizza_of_the_day in dump['pizza-of-the-day']:
-                    if pizza_of_the_day['day'] == today:
-                        return Pizza(today, pizza_of_the_day['name'], pizza_of_the_day['recipe'], pizza_of_the_day['price'])
-        else:
-            raise SystemError('file doesn\'t exist')
-
-    @staticmethod
     def get_pizza(name):
         if isinstance(name, str) and name.strip() != '':
             if os.path.exists('pizza.json'):
@@ -118,3 +106,20 @@ class Pizza:
         for ingredient in self.recipe.keys():
             info += ingredient + ' : ' + str(self.recipe[ingredient]) + '\n\t'
         return info
+
+class Pizza_of_the_day(Pizza):
+    def __init__(self, day, name, recipe, price):
+        super.__init__(day, name, recipe, price)
+
+    @staticmethod
+    def get_pizza():
+        today = date.today().strftime('%A')
+        if os.path.exists('pizza.json'):
+            with open('pizza.json', 'r') as f:
+                dump = json.load(f)
+                for pizza_of_the_day in dump['pizza-of-the-day']:
+                    if pizza_of_the_day['day'] == today:
+                        return Pizza(today, pizza_of_the_day['name'], pizza_of_the_day['recipe'],
+                                     pizza_of_the_day['price'])
+        else:
+            raise SystemError('file doesn\'t exist')
