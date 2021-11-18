@@ -1,0 +1,23 @@
+{
+  "Event_name": {
+    "date": "10-12-21",
+    "name": "name_event",
+    "total_tickets": 5,
+    "current_tickets": 1,
+    "regular_ticket_price" : 100.0,
+    "tickets": {
+      "0": {
+        "type": "Regular_ticket",
+        "event_name": "Event_name",
+        "date": "10-12-21",
+        "price": 100.0
+      },
+      "4": {
+        "type": "Late_ticket",
+        "event_name": "Event_name",
+        "date": "10-12-21",
+        "price": 110.0
+      }
+    }
+  }
+}
