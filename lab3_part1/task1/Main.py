@@ -20,7 +20,7 @@ def main():
     t3 = Late_ticket('name', '20-11-21', 1.)
     t4 = Advance_ticket('name', '20-11-21', 1.)
     event = Event('20-11-21', 'name', 1, 1, 1., [t1, t2, t3, t4])
-    event.put_event()
+    # event.put_event()
     # print(event.to_dict())
     # print(event)
     # event.remove_ticket(int(input()))

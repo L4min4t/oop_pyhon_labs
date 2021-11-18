@@ -100,7 +100,7 @@ class Event:
 
     @staticmethod
     def get_event(name):
-        if os.path.exists('pizza.json'):
+        if os.path.exists('Events.json'):
             with open('Events.json', 'r') as f:
                 dump = json.load(f)
                 if name.strip() in dump.keys():
