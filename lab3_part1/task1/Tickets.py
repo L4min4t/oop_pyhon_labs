@@ -64,14 +64,7 @@ class Regular_ticket:
             raise TypeError('price must be a float')
         if value <= 0:
             raise ValueError('the price must be greater than zero')
-        if self.__class__.__name__ == 'Regular_ticket':
-            self.__price = value
-        if self.__class__.__name__ == 'Student_ticket':
-            self.__price = value * STUDENT_DISCOUNT
-        if self.__class__.__name__ == 'Advance_ticket':
-            self.__price = value * ADVANCE_DISCOUNT
-        if self.__class__.__name__ == 'Late_ticket':
-            self.__price = value * LATE_DISCOUNT
+        self.__price = value
 
     def to_dict(self):
         dump = {}
@@ -85,17 +78,8 @@ class Regular_ticket:
 
     @staticmethod
     def from_dict(dump):
-        pass
         for item in dump.keys():
-            if dump[item]['type'] == 'Regular_ticket':
                 return Regular_ticket(dump[item]['event_name'], dump[item]['date'], dump[item]['price'], item)
-            if dump[item]['type'] == 'Student_ticket':
-                return Student_ticket(dump[item]['event_name'], dump[item]['date'], dump[item]['price'], item)
-            if dump[item]['type'] == 'Advance_ticket':
-                return Advance_ticket(dump[item]['event_name'], dump[item]['date'], dump[item]['price'], item)
-            if dump[item]['type'] == 'Late_ticket':
-                return Late_ticket(dump[item]['event_name'], dump[item]['date'], dump[item]['price'], item)
-
 
 
     def __str__(self):
@@ -104,16 +88,30 @@ class Regular_ticket:
 
 class Advance_ticket(Regular_ticket):
     def __init__(self, event_name, date, price, id=0):
-        super(Advance_ticket, self).__init__(event_name, date, price, id)
+        super(Advance_ticket, self).__init__(event_name, date, price * ADVANCE_DISCOUNT, id)
+    @staticmethod
+    def from_dict(dump):
+        for item in dump.keys():
+            return Advance_ticket(dump[item]['event_name'], dump[item]['date'], dump[item]['price'], item)
 
 
 
 class Late_ticket(Regular_ticket):
     def __init__(self, event_name, date, price, id=0):
-        super(Late_ticket, self).__init__(event_name, date, price, id)
+        super(Late_ticket, self).__init__(event_name, date, price * LATE_DISCOUNT, id)
+
+    @staticmethod
+    def from_dict(dump):
+        for item in dump.keys():
+            return Late_ticket(dump[item]['event_name'], dump[item]['date'], dump[item]['price'], item)
 
 
 
 class Student_ticket(Regular_ticket):
     def __init__(self, event_name, date, price, id=0):
-        super(Student_ticket, self).__init__(event_name, date, price, id)
+        super(Student_ticket, self).__init__(event_name, date, price * STUDENT_DISCOUNT, id)
+
+    @staticmethod
+    def from_dict(dump):
+        for item in dump.keys():
+            return Student_ticket(dump[item]['event_name'], dump[item]['date'], dump[item]['price'], item)
