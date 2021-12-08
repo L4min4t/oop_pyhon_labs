@@ -101,7 +101,7 @@ class Rational:
             return self
         return NotImplemented
 
-    def __truediv__(self, other):
+    def __itruediv__(self, other):
         if isinstance(other, int):
             self.__denominator = self.__denominator*other
             self.reduce()
