@@ -1,4 +1,3 @@
-from tkinter import OptionMenu
 import psycopg2
 from psycopg2 import OperationalError
 from interfaces import ITeacher, ILocalCourse, ICourseFactory, IOffsiteCourse, ICourse
