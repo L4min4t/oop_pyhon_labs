@@ -6,7 +6,10 @@
 # and IOffsiteCourse respectively. Courses and teachers should be created only through the ICourseFactory interface
 # implemented by a class named CourseFactory. Write a program that will form courses of software academy.
 
-from classes import Teacher, LocalCourse, OffsiteCourse, CoursesFactory
+from teacher import Teacher
+from courses_factory import CoursesFactory
+from offsite_course import OffsiteCourse
+from local_course import LocalCourse
 
 
 def main():
