@@ -111,11 +111,13 @@ class CoursesFactory(ICourseFactory):
             elif isinstance(item, ICourse):
                 if "LocalCourse" == item.__class__.__name__:
                     self.__cursor.execute(
-                        f'INSERT INTO course ("name", "teacher_name", "place", "program", "is_local") VALUES (\'{item.name}\', \'{item.teacher.name}\', \'{item.room}\', \'{item.program}\', \'TRUE\')')
+                        f'INSERT INTO course ("name", "teacher_name", "place", "program", "is_local") '
+                    + f'VALUES (\'{item.name}\', \'{item.teacher.name}\', \'{item.room}\', \'{item.program}\', \'TRUE\')')
                     self.__conn.commit()
                 elif "OffsiteCourse" == item.__class__.__name__:
                     self.__cursor.execute(
-                        f'INSERT INTO course ("name", "teacher_name", "place", "program", "is_local") VALUES (\'{item.name}\', \'{item.teacher.name}\', \'{item.town}\', \'{item.program}\', \'False\')')
+                        f'INSERT INTO course ("name", "teacher_name", "place", "program", "is_local") '
+                    + f'VALUES (\'{item.name}\', \'{item.teacher.name}\', \'{item.town}\', \'{item.program}\', \'False\')')
                     self.__conn.commit()
                 else:
                     raise TypeError('unknown course')
